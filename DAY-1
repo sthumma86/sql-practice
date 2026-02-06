@@ -1,0 +1,22 @@
+Here’s  summary for today learnings:
+	• Git & GitHub Practice:
+		○ Pushed code from Git Bash to GitHub.
+		○ Practiced basic Git workflow: git add, git commit, git push.
+		○ Linked local VSCode projects to GitHub repository.
+		
+	• Working with Databases in VSCode:
+		○ Connected VSCode to an existing PostgreSQL database.
+		○ Learned to use IP address for faster connection.
+		○ Practiced workflow: practice SQL queries in VSCode → push code to GitHub → execute queries from VSCode.
+	
+	• PostgreSQL (PGSQL) in VSCode:
+		○ Checked PostgreSQL version using psql --version in PowerShell.
+		○ Fixed VSCode terminal issue by restarting VSCode.
+		○ Explored executing queries in VSCode without selecting the entire query.
+		○ Learned that SHOW DATABASES command doesn’t work in PGSQL (MySQL command).
+		
+	• Database Syntax Practice:
+		○ Attempted CREATE TABLE in PGSQL.
+		○ Corrected syntax differences between SQL Server (nvarchar) and PGSQL (varchar).
+		○ Learned how to write comments in PGSQL.
+		○ Checked that TOP 5 doesn’t work in PGSQL; LIMIT 5 is used instead.
