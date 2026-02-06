@@ -1,0 +1,120 @@
+Here’s exactly how to create your PostgreSQL database and tables step by step:
+
+Step 1: Open PowerShell
+	• Press Win + X → Windows PowerShell (or just search “PowerShell”).
+
+Step 2: Connect to PostgreSQL using psql
+	1. Make sure PostgreSQL is installed on your machine.
+	2. Run the following command in PowerShell:
+psql -U [your_pg_username]
+	• Replace your_pg_username with your PostgreSQL username.
+	• It will ask for your password.
+	If psql is not recognized, you may need to add PostgreSQL’s bin folder to your PATH. Typically:
+	C:\Program Files\PostgreSQL\<version>\bin
+
+Verify once loggin to pgsql by below command
+Psql --version
+
+
+
+Step 3: Create the Database
+Once you’re in the psql prompt (it will show something like username=#):
+CREATE DATABASE practice_db;
+	You should see: CREATE DATABASE
+
+
+
+Step 4: Connect to Your New Database
+\c practice_db
+	Now the prompt changes to: practice_db=#
+	
+	
+
+Step 5: Create Tables and Insert Sample Data
+Copy and paste these commands into PowerShell (psql will accept multi-line SQL):
+-- Create Customers table
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- Create Orders table
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES customers(id),
+    product VARCHAR(50),
+    amount NUMERIC(10,2),
+    order_date DATE DEFAULT CURRENT_DATE
+);
+
+
+
+-- Insert sample customers
+INSERT INTO customers (name, email) VALUES
+('Lakshmi', 'lakshmi@example.com'),
+('Ravi', 'ravi@example.com'),
+('Ananya', 'ananya@example.com');
+-- Insert sample orders
+INSERT INTO orders (customer_id, product, amount) VALUES
+(1, 'Laptop', 1200.50),
+(2, 'Phone', 600.00),
+(1, 'Keyboard', 50.75);
+
+
+
+
+Step 6: Verify Tables and Data
+-- List all tables
+\dt
+
+
+-- See data in customers
+SELECT * FROM customers;
+
+
+-- See data in orders
+SELECT * FROM orders;
+
+
+
+If you see your tables and the data, your database is ready to use.
+
+Troubleshooting:
+================
+If we receive error that PowerShell cannot find the psql command, which means PostgreSQL’s bin folder is not in your system PATH. That’s why psql -U postgres failed.
+
+
+Steps to resolve:
+====================
+
+Here’s how to fix it step by step on Windows:
+
+Step 1: Locate PostgreSQL bin folder
+By default, PostgreSQL installs here:
+C:\Program Files\PostgreSQL\<version>\bin
+	• Example: C:\Program Files\PostgreSQL\18\bin
+	• Inside that folder, you should see psql.exe.
+
+Step 2: Add PostgreSQL bin to PATH
+	1. Press Win + S, type Environment Variables, and open Edit the system environment variables.
+	2. Click Environment Variables…
+	3. Under System variables, find Path → select → Edit
+	4. Click New → paste the path to PostgreSQL bin (e.g., C:\Program Files\PostgreSQL\18\bin)
+	5. Click OK → OK → OK to close all windows.
+
+Step 3: Restart PowerShell
+	• Close PowerShell and open a new one so it recognizes the updated PATH.
+
+Step 4: Test psql
+psql --version
+	• You should see something like: psql (PostgreSQL) 18.0
+	• If yes, your PATH is set correctly.
+	
+
+
+Step 5: Connect to PostgreSQL
+psql -U postgres
+	• Replace postgres with your username.
+	• Enter your password when prompted.
+Then you can create your practice_db and tables as I shared earlier.
