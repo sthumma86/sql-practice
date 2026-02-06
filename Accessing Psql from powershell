@@ -1,4 +1,6 @@
 Here’s exactly how to create your PostgreSQL database and tables step by step:
+=================================================================================
+
 
 Step 1: Open PowerShell
 	• Press Win + X → Windows PowerShell (or just search “PowerShell”).
